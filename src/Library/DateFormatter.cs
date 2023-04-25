@@ -1,4 +1,6 @@
-﻿namespace TestDateFormat;
+﻿using System;
+namespace TestDateFormat;
+
 
 /// <summary>
 /// Esta clase implementa la funcionalidad de cambiar el formato de una fecha.
@@ -13,7 +15,7 @@ public class DateFormatter
     /// </summary>
     /// <param name="date">Una fecha en formato "dd/mm/yyyy".</param>
     /// <returns>La fecha convertida al formato "yyyy-mm-dd".</returns>
-    public static string ChangeFormat(string date)
+    public static string ChangeFormat(string Input)
     {
     
         if(!StringIsValid(Input)) 
@@ -21,24 +23,30 @@ public class DateFormatter
             return string.Empty;
         }
         
-        return date.Substring(6) + "-" + date.Substring(3, 2) + "-" + date.Substring(0, 2);
+        return Input.Substring(6) + "-" + Input.Substring(3, 2) + "-" + Input.Substring(0, 2);
     }
 
-    public bool StringIsValid(string Input)
+    public static bool StringIsValid(string Input)
     {
-        char[] barra = {'/'};
-        string[] Date;
-        string date;
+        if (string.IsNullOrEmpty(Input))
+        {
+            return false;
+        }
+        else
+        {
+            //char barra = {'/'};
+            //string[] Date;
+            //List<string> date;
 
-        Date = Input.Split(barra);
+           //date = Input.Split('/');
         
-        date = Convert.ToString(Date);
-        int DateNumber = Convert.ToInt32(date.Substring(0, 2));
-        int Month = Convert.ToInt32(date.Substring(3, 2));
-        int Year = Convert.ToInt32(date.Substring(6));
+            //date = Convert.ToString(Date);
+            int DateNumber = Convert.ToInt32(Input.Substring(0, 2));
+            int Month = Convert.ToInt32(Input.Substring(3, 2));
+            int Year = Convert.ToInt32(Input.Substring(6));
 
-        return ((DateNumber >= 1 && DateNumber <= 31) && (Month >= 1 && Month <= 12) && (Year >= 1 && Year < 2024));
-
+            return ((DateNumber >= 1 && DateNumber <= 31) && (Month >= 1 && Month <= 12) && (Year >= 1 && Year < 2024));
+        }
     }
 
     

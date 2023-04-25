@@ -11,10 +11,10 @@ public class DateFormatterTests
     public void TestWrongDate()
     {
         const string Input = "25/11/1999";
-        const string Expected = "";
+        const string Expected = "1999-11-25";
 
         string actual = DateFormatter.ChangeFormat(Input);
-        Assert.That(Input, Is.EqualTo(Expected));
+        Assert.That(actual, Is.EqualTo(Expected));
     }
 
     [Test]
@@ -24,16 +24,16 @@ public class DateFormatterTests
         const string Expected = "";
 
         string actual = DateFormatter.ChangeFormat(Input);
-        Assert.That(Input, Is.EqualTo(Expected));
+        Assert.That(actual, Is.EqualTo(Expected));
     }
 
-    [test]
+    [Test]
     public void TestWrongYear()
     {
         const string Input = "";
         const string Expected = "";
 
         string actual = DateFormatter.ChangeFormat(Input);
-        Assert.That(Input, Is.EqualTo(Expected));
+        Assert.That(actual, Is.EqualTo(Expected));
     }
 }
